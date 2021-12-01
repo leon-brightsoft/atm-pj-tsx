@@ -1,0 +1,15 @@
+.atm_card {
+    display: inline-block;
+    width: auto;
+    height: auto;
+
+    .card_detail {
+        .green_text {
+            color: #3ef725;
+        }
+
+        .red_text {
+            color: #f72525;
+        }
+    }
+}
