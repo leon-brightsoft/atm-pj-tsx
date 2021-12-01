@@ -32,10 +32,12 @@ export const register = (data: User) => {
         try {
             const res = await registerAPI(data);
             if (res.data.user) {
+                const payload = { isAuthenticated: true, user: res.data.user, token: res.data.PRIVATE_TOKEN }
                 dispatch({
                     type: SET_AUTH,
-                    payload: { isAuthenticated: true, user: res.data.user }
+                    payload
                 })
+                localStorage.setItem("@auth/token", JSON.stringify(payload))
                 accessToken(res.data.PRIVATE_TOKEN)
                 toast.success("Register successfully")
             } else {
