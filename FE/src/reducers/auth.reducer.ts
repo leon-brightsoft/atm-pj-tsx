@@ -4,6 +4,7 @@ type State = {
     authLoading: boolean,
     user: object | null,
     isAuthenticated: boolean,
+    token: string
 }
 
 type Action = {
@@ -14,6 +15,7 @@ const initialState: State = {
     authLoading: false,
     user: null,
     isAuthenticated: false,
+    token: "",
 };
 
 const auth = (state = initialState, action: Action): any => {
@@ -23,7 +25,8 @@ const auth = (state = initialState, action: Action): any => {
                 ...state,
                 authLoading: false,
                 user: action.payload?.user,
-                isAuthenticated: action.payload?.isAuthenticated
+                isAuthenticated: action.payload?.isAuthenticated,
+                token: action.payload?.token
             }
         
         default: 
