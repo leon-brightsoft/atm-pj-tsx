@@ -12,33 +12,33 @@ import { addATM } from "../../../../actions/atm.action";
 import { InputEvent, SubmitEvent } from "../../../../constants/Event";
 import toast from "react-hot-toast";
 
-const CreateAtmBtn: React.FC = ()  => {
-    const dispatch = useDispatch();
-    const [open, setOpen] = useState<boolean>(false);
-    const [atmName, setAtmName] = useState<string>("");
+const CreateAtmBtn: React.FC = () => {
+  const dispatch = useDispatch();
+  const [open, setOpen] = useState<boolean>(false);
+  const [atmName, setAtmName] = useState<string>("");
 
-    const handleClickOpen = () => {
-        setOpen(true);
-    }
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
 
-    const handleClickClose = () => {
-        setOpen(false);
-    }
+  const handleClickClose = () => {
+    setOpen(false);
+  };
 
-    const onChangeAddAtm = (e: InputEvent) => {
-        setAtmName(e.target.value);
+  const onChangeAddAtm = (e: InputEvent) => {
+    setAtmName(e.target.value);
+  };
+  const handleAddAtm = async (e: SubmitEvent) => {
+    e.preventDefault();
+    if (!atmName) {
+      return toast.error("Name is required");
     }
-    const handleAddAtm = async (e: SubmitEvent) => {
-        e.preventDefault();
-        if (!atmName) {
-            return toast.error("Name is required");
-          }
-          if (atmName.length < 2) {
-            return toast.error("Name is too short");
-          }
-          setOpen(false);
-          dispatch(addATM(atmName));
+    if (atmName.length < 2) {
+      return toast.error("Name is too short");
     }
+    await dispatch(addATM(atmName));
+    setOpen(false)
+  };
 
   return (
     <div>

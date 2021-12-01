@@ -7,7 +7,8 @@ export const getAtmApi = async () => {
 }
 
 export const addAtmApi = async (data: string) => {
-    return await axios.post(BASE_URL, data)
+    const name = {name: data}
+    return await axios.post(BASE_URL, name)
 }
 
 export const delAtmApi = async (id: string) => {
