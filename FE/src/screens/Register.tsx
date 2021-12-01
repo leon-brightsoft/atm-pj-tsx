@@ -108,7 +108,7 @@ const Register: React.FC = () => {
               </Button>
               <Grid container justifyContent="flex-end">
                 <Grid item>
-                  <Link to="/login">
+                  <Link to="/login" className="link_visited">
                     Already have an account? Sign in
                   </Link>
                 </Grid>

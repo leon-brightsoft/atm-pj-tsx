@@ -118,7 +118,7 @@ const Login: React.FC = () => {
               <Grid container>
                 <Grid item xs></Grid>
                 <Grid item>
-                  <Link to="/register">
+                  <Link to="/register" className="link_visited">
                     Don't have an account? Sign Up
                   </Link>
                 </Grid>
