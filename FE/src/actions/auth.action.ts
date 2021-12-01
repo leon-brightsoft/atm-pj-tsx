@@ -9,10 +9,12 @@ export const login = (data: User) => {
         try {
             const res = await loginAPI(data);
             if (res.data.user) {
+                const payload = { isAuthenticated: true, user: res.data.user, token: res.data.PRIVATE_TOKEN }
                 dispatch({
                     type: SET_AUTH,
-                    payload: { isAuthenticated: true, user: res.data.user}
+                    payload
                 })
+                localStorage.setItem("@auth/token", JSON.stringify(payload))
                 accessToken(res.data.PRIVATE_TOKEN)
                 toast.success("Login successfully!")
             } else {
@@ -32,7 +34,7 @@ export const register = (data: User) => {
             if (res.data.user) {
                 dispatch({
                     type: SET_AUTH,
-                    payload: { isAuthenticated: true, user: res.data.user}
+                    payload: { isAuthenticated: true, user: res.data.user }
                 })
                 accessToken(res.data.PRIVATE_TOKEN)
                 toast.success("Register successfully")
@@ -48,10 +50,9 @@ export const register = (data: User) => {
 
 export const logout = () => {
     return async (dispatch: any) => {
-        localStorage.removeItem("@localStorage/token")
+        localStorage.removeItem("@auth/token")
         dispatch({
-            type: LOGOUT,
-            payload: { isAuthenticated: false, user: null}
+            type: LOGOUT
         })
     }
 }

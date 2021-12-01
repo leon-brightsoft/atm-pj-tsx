@@ -3,11 +3,13 @@ import { logout } from "../../../actions/auth.action";
 import { MenuItem, Button, Menu } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { ClickEvent } from "../../../constants/Event";
+import { useNavigate } from "react-router";
 
 const Logout = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const user = useSelector((state: any) => state.auth.user);
 
   const handleClick = (e: ClickEvent) => {
@@ -18,8 +20,9 @@ const Logout = () => {
     setAnchorEl(null);
   };
 
-  const handleLogout = () => {
-    dispatch(logout());
+  const handleLogout = async () => {
+    await dispatch(logout());
+    navigate("/login")
     setAnchorEl(null);
   };
   return (
