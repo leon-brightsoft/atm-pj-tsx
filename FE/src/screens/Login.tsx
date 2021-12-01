@@ -29,7 +29,7 @@ const Login: React.FC = () => {
   const location = useLocation();
 
   const state = location.state as { from: Location };
-  const from = state ? state.from.pathname:"/";
+  const from = state ? state.from.pathname:"/home";
 
   const [loginForm, setLoginForm] = React.useState<User>({
     email: "",

@@ -41,7 +41,7 @@ const Register: React.FC = () => {
     if (!validateEmail(registerForm)) return toast.error("Email Invalid");
     if (!registerForm.password) return toast.error("Password required");
     dispatch(register(registerForm));
-    navigate("/");
+    navigate("/home");
   };
 
   return (
