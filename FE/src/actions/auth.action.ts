@@ -51,7 +51,7 @@ export const logout = () => {
         localStorage.removeItem("@localStorage/token")
         dispatch({
             type: LOGOUT,
-            payload: { isAuthenticated: false, user: null }
+            payload: { isAuthenticated: false, user: null,  token: "" }
         })
     }
 }
