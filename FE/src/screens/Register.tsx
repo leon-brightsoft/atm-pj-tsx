@@ -35,12 +35,12 @@ const Register: React.FC = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!registerForm.email) return toast.error("Email required");
     if (!validateEmail(registerForm)) return toast.error("Email Invalid");
     if (!registerForm.password) return toast.error("Password required");
-    dispatch(register(registerForm));
+    await dispatch(register(registerForm));
     navigate("/home");
   };
 

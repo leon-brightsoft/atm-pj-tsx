@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useNavigate, useLocation } from "react-router";
+import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import User from "../interfaces/user.interface";
 import { validateEmail } from "../constants/EmailValid";
@@ -26,10 +26,6 @@ const theme = createTheme();
 const Login: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const location = useLocation();
-
-  const state = location.state as { from: Location };
-  const from = state ? state.from.pathname:"/home";
 
   const [loginForm, setLoginForm] = React.useState<User>({
     email: "",
@@ -43,13 +39,13 @@ const Login: React.FC = () => {
     });
   };
 
-  const handleSubmit = (e: SubmitEvent) => {
+  const handleSubmit = async (e: SubmitEvent) => {
     e.preventDefault();
     if (!loginForm.email) return toast.error("Email required");
     if (!validateEmail(loginForm)) return toast.error("Email Invalid");
     if (!loginForm.password) return toast.error("Password required");
-    dispatch(login(loginForm));
-    navigate(from, { replace: true });
+    await dispatch(login(loginForm));
+    navigate("/home", { replace: true });
   };
 
   return (
