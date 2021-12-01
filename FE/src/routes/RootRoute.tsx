@@ -9,7 +9,6 @@ import { accessToken } from "../services/token.sevice";
 
 const RootRoute: React.FC = () => {
   const token = useSelector((state: any) => state.auth.token);
-  console.log(token)
   useEffect(() => {
     accessToken(token);
   }, [token]);
