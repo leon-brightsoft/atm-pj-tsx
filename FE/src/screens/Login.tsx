@@ -28,8 +28,8 @@ const Login: React.FC = () => {
   const navigate = useNavigate();
 
   const [loginForm, setLoginForm] = React.useState<User>({
-    email: "snow@gmail.com",
-    password: "12345678",
+    email: "",
+    password: "",
   });
 
   const onChangeLoginForm = (e: InputEvent) => {
