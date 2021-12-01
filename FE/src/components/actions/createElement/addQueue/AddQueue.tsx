@@ -42,18 +42,16 @@ const AddQueueBtn: React.FC = () => {
       return toast.error("Name is required!");
     }
     if (queue.name.length < 2) {
-      setOpen(true);
       return toast.error("Name is too short!");
     }
     if (!queue.transaction) {
-      setOpen(true);
       return toast.error("Transactions is required");
     }
     if (queue.transaction > 20 || queue.transaction < 1) {
-      setOpen(true);
       return toast.error("Transaction must be between 1 and 20");
     }
     await addQueue(queue);
+    setOpen(false);
   };
 
   return (

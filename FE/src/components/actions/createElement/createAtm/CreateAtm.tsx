@@ -28,19 +28,16 @@ const CreateAtmBtn: React.FC = ()  => {
     const onChangeAddAtm = (e: InputEvent) => {
         setAtmName(e.target.value);
     }
-
     const handleAddAtm = async (e: SubmitEvent) => {
         e.preventDefault();
         if (!atmName) {
-            setOpen(true);
             return toast.error("Name is required");
           }
           if (atmName.length < 2) {
-            setOpen(true);
             return toast.error("Name is too short");
           }
+          setOpen(false);
           dispatch(addATM(atmName));
-          setAtmName("");
     }
 
   return (
@@ -69,7 +66,7 @@ const CreateAtmBtn: React.FC = ()  => {
             >
               Cancel
             </Button>
-            <Button variant="outlined" type="submit" onClick={handleClickClose}>
+            <Button variant="outlined" type="submit">
               Add
             </Button>
           </DialogActions>
