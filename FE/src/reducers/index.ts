@@ -5,7 +5,7 @@ import storage from "redux-persist/lib/storage";
 
 import auth from "./auth.reducer";
 import atm from "./atm.reducer";
-import queue from "./queue.reducer"
+import queue from "./queue.reducer";
 
 type Config = {
     key: string,

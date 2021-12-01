@@ -3,8 +3,7 @@ import { SET_AUTH } from "../constants/actionTypes";
 type State = {
     authLoading: boolean,
     user: object | null,
-    isAuthenticated: boolean,
-    token: string
+    isAuthenticated: boolean
 }
 
 type Action = {
@@ -14,8 +13,7 @@ type Action = {
 const initialState: State = {
     authLoading: false,
     user: null,
-    isAuthenticated: false,
-    token: "",
+    isAuthenticated: false
 };
 
 const auth = (state = initialState, action: Action): any => {
@@ -25,8 +23,7 @@ const auth = (state = initialState, action: Action): any => {
                 ...state,
                 authLoading: false,
                 user: action.payload?.user,
-                isAuthenticated: action.payload?.isAuthenticated,
-                token: action.payload?.token
+                isAuthenticated: action.payload?.isAuthenticated
             }
         
         default: 

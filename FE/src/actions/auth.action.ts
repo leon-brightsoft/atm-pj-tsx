@@ -11,7 +11,7 @@ export const login = (data: User) => {
             if (res.data.user) {
                 dispatch({
                     type: SET_AUTH,
-                    payload: { isAuthenticated: true, user: res.data.user, token:res.data.PRIVATE_TOKEN }
+                    payload: { isAuthenticated: true, user: res.data.user}
                 })
                 accessToken(res.data.PRIVATE_TOKEN)
                 toast.success("Login successfully!")
@@ -32,7 +32,7 @@ export const register = (data: User) => {
             if (res.data.user) {
                 dispatch({
                     type: SET_AUTH,
-                    payload: { isAuthenticated: true, user: res.data.user, token:res.data.PRIVATE_TOKEN }
+                    payload: { isAuthenticated: true, user: res.data.user}
                 })
                 accessToken(res.data.PRIVATE_TOKEN)
                 toast.success("Register successfully")
@@ -51,7 +51,7 @@ export const logout = () => {
         localStorage.removeItem("@localStorage/token")
         dispatch({
             type: LOGOUT,
-            payload: { isAuthenticated: false, user: null,  token: "" }
+            payload: { isAuthenticated: false, user: null}
         })
     }
 }
